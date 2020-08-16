@@ -10,20 +10,20 @@ class CounterGroup extends Component{
         }
     }
 
-onChangeHandle = (event) =>{
+    onChangeHandle = (event) =>{
         this.setState({
             groupSize: parseInt(event.target.value),
             total: 0
         })
-}
+    }
 
 
-increase = () =>{
-    this.setState({
-        total: this.state.total+1
-    })
-}
-decrease = () =>{
+    increase = () =>{
+        this.setState({
+            total: this.state.total+1
+        })
+    }
+    decrease = () =>{
         this.setState({
             total: this.state.total-1
         })
