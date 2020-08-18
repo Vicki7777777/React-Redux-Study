@@ -1,12 +1,14 @@
 import React, {Component} from "react";
 import Counter from "../Counter";
 
+
 class CounterGroup extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            groupSize: 0,
-            total:0
+            groupSize: this.props.groupSize,
+            total:0,
+            number:this.props.number
         }
     }
 
@@ -14,26 +16,25 @@ class CounterGroup extends Component{
         this.setState({
             groupSize: parseInt(event.target.value),
             total: 0
-        })
+        },this.props.reset)
     }
 
 
     increase = () =>{
         this.setState({
             total: this.state.total+1
-        })
+        },this.props.increase)
+
     }
     decrease = () =>{
         this.setState({
             total: this.state.total-1
-        })
+        },this.props.decrease)
+
     }
 
 
-
-
     render() {
-
         return(<div>
             <label>numbers of counters:</label>
             <input type="number" onChange={this.onChangeHandle}/>
@@ -41,7 +42,9 @@ class CounterGroup extends Component{
             {new Array(this.state.groupSize).fill(0).map((value, index) => <Counter key={index}
                                                                                     increase={this.increase}
                                                                                     decrease={this.decrease}
-                                                                                    groupSize={this.state.groupSize}/>)}
+                                                                                    groupSize={this.state.groupSize}
+                                                                                    reset={this.props.resetNumber}
+                                                                                    number={this.state.number}/>)}
         </div>)
     }
 }
