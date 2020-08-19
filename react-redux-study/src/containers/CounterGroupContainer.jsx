@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
-import CounterGroup from "../../component/CounterGroup";
-import {changeGroupSize, decrease, increase, resetNumber} from "../../actions";
+import CounterGroup from "../component/CounterGroup";
+import {changeGroupSize, decrease, increase, resetNumber} from "../actions";
 
 
 const mapStateToProps = (state) =>({

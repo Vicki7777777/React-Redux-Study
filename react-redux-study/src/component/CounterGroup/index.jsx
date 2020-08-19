@@ -7,7 +7,7 @@ class CounterGroup extends Component{
         super(props);
         this.state = {
             groupSize: this.props.groupSize,
-            total:0,
+            total:this.props.total,
             number:this.props.number
         }
     }
@@ -20,17 +20,12 @@ class CounterGroup extends Component{
     }
 
 
-    increase = () =>{
-        this.setState({
-            total: this.state.total+1
-        },this.props.increase)
+    addNumber = () =>{
+        this.props.increase()
 
     }
-    decrease = () =>{
-        this.setState({
-            total: this.state.total-1
-        },this.props.decrease)
-
+    reduceNumber = () =>{
+        this.props.decrease()
     }
 
 
@@ -40,10 +35,9 @@ class CounterGroup extends Component{
             <input type="number" onChange={this.onChangeHandle}/>
             <label>total:{this.state.total}</label>
             {new Array(this.state.groupSize).fill(0).map((value, index) => <Counter key={index}
-                                                                                    increase={this.increase}
-                                                                                    decrease={this.decrease}
+                                                                                    addNumber={this.addNumber}
+                                                                                    reduceNumber={this.reduceNumber}
                                                                                     groupSize={this.state.groupSize}
-                                                                                    reset={this.props.resetNumber}
                                                                                     number={this.state.number}/>)}
         </div>)
     }
